@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'App Preferences/app_preferences.dart';
 import 'screens/home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  AppPreferences.initHive();
   runApp(const MyApp());
 }
 
@@ -16,19 +16,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      themeMode: AppPreferences.isDarkMode ? ThemeMode.dark : ThemeMode.light,
       theme: ThemeData(
         appBarTheme: AppBarTheme(
-          centerTitle: true ,
+          centerTitle: true,
           elevation: 3,
-        )
+        ),
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         appBarTheme: AppBarTheme(
-          centerTitle: true ,
+          centerTitle: true,
           elevation: 3,
-        )
-      ) ,
+        ),
+      ),
       home: HomeScreen(),
     );
   }
