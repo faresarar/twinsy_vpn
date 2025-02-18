@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../App Preferences/app_preferences.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,7 +17,12 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.changeThemeMode(
+                AppPreferences.isDarkMode ? ThemeMode.light : ThemeMode.dark,
+              );
+              AppPreferences.isDarkMode =! AppPreferences.isDarkMode;
+            },
             icon: Icon(Icons.dark_mode),
           ),
         ],
