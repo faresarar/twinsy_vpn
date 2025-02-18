@@ -64,8 +64,8 @@ class VpnEngine {
   }
 
   /// Stages of Vpn Connections
-  static const String vpnConnectNow = "connected";
-  static const String vpnDisConnectNow = "disconnected";
+  static const String vpnConnectedNow = "connected";
+  static const String vpnDisConnectedNow = "disconnected";
   static const String vpnWaitConnectNow = "wait_connected";
   static const String vpnAuthenticatingConnectNow = "authenticating";
   static const String vpnReConnectNow = "reconnect";
