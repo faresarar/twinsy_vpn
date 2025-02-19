@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 
 class CustomButtonWidget extends StatelessWidget {
-  const CustomButtonWidget({super.key});
-
+  const CustomButtonWidget({
+    super.key,
+    required this.color,
+    required this.color2,
+    required this.color3,
+    required this.statusText,
+  });
+  final Color color;
+  final Color color2;
+  final Color color3;
+  final String statusText;
   @override
   Widget build(BuildContext context) {
     Size sizeScreen = MediaQuery.sizeOf(context);
@@ -16,20 +25,20 @@ class CustomButtonWidget extends StatelessWidget {
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.green,
+                color: color,
               ),
               child: Container(
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.redAccent,
+                  color: color2,
                 ),
                 child: Container(
                   width: sizeScreen.width * 0.14,
                   height: sizeScreen.height * 0.14,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.purpleAccent,
+                    color: color3,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -41,7 +50,7 @@ class CustomButtonWidget extends StatelessWidget {
                         color: Colors.white,
                       ),
                       Text(
-                        "Lets connect ",
+                        statusText,
                         style: TextStyle(
                           fontSize: 22,
                           color: Colors.white,

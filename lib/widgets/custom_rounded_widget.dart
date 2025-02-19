@@ -6,12 +6,16 @@ class CustomRoundedWidget extends StatelessWidget {
     required this.titleText,
     required this.subTitleText,
     required this.color,
-    required this.iconData,
+    this.iconData,
+    this.image,
   });
+
   final String titleText;
   final String subTitleText;
   final Color color;
-  final IconData iconData;
+  final IconData? iconData;
+  final Image? image;
+
   @override
   Widget build(BuildContext context) {
     Size sizeScreen = MediaQuery.sizeOf(context);
@@ -22,11 +26,14 @@ class CustomRoundedWidget extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 33,
-            child: Icon(
-              iconData,
-              size: 30,
-              color: color,
-            ),
+            child: iconData != null
+                ? Icon(
+                    iconData,
+                    size: 30,
+                    color: color,
+                  )
+                : image ??
+                    Container(), // Show image if iconData is null, otherwise an empty container
           ),
           Text(
             titleText,

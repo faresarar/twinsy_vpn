@@ -16,7 +16,7 @@ class VpnEngine {
       EventChannel(eventChannelVpnStage).receiveBroadcastStream().cast();
 
   /// Vpn Connection Status Snapshot
-  static Stream<String> snapshotVpnStatus() =>
+  static Stream<VpnStatusModel?> snapshotVpnStatus() =>
       EventChannel(eventChannelVpnStatus)
           .receiveBroadcastStream()
           .map(
