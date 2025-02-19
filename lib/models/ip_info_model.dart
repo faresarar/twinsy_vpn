@@ -1,0 +1,28 @@
+class IpInfoModel {
+  late final String countryName;
+  late final String regionName;
+  late final String cityName;
+  late final String zipCode;
+  late final String timeZone;
+  late final String internetServiceProvider;
+  late final String query;
+
+  IpInfoModel({
+    required this.countryName,
+    required this.regionName,
+    required this.cityName,
+    required this.zipCode,
+    required this.timeZone,
+    required this.internetServiceProvider,
+    required this.query,
+  });
+  IpInfoModel.fromJson(Map<String, dynamic> jsonData) {
+    countryName = jsonData['country'];
+    regionName = jsonData['region'];
+    cityName = jsonData['city'];
+    zipCode = jsonData['zip'];
+    timeZone = jsonData['timeZone'];
+    internetServiceProvider = jsonData['isp'];
+    query = jsonData['query'];
+  }
+}
