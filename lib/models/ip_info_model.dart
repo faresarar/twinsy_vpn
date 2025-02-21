@@ -17,12 +17,12 @@ class IpInfoModel {
     required this.query,
   });
   IpInfoModel.fromJson(Map<String, dynamic> jsonData) {
-    countryName = jsonData['country'];
-    regionName = jsonData['region'];
-    cityName = jsonData['city'];
-    zipCode = jsonData['zip'];
-    timeZone = jsonData['timeZone'];
-    internetServiceProvider = jsonData['isp'];
-    query = jsonData['query'];
+    countryName = jsonData['country'] ?? "";
+    regionName = jsonData['region'] ?? "";
+    cityName = jsonData['city'] ?? "";
+    zipCode = jsonData['zip'] ?? "";
+    timeZone = jsonData['timeZone'] ?? "Unknown";
+    internetServiceProvider = jsonData['isp'] ?? "Unknown";
+    query = jsonData['query'] ?? "Unknown";
   }
 }

@@ -7,6 +7,7 @@ import '../vpn engine/vpn_engine.dart';
 import '../widgets/custom_button_widget.dart';
 import '../widgets/custom_rounded_widget.dart';
 import '../widgets/location_selection.dart';
+import 'connected_network_ip_info_screen.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
   static final homeController = Get.put(HomeController());
@@ -21,7 +22,9 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Free Vpn"),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.to(()=>ConnectedNetworkIpInfoScreen());
+          },
           icon: Icon(Icons.perm_device_info),
         ),
         actions: [

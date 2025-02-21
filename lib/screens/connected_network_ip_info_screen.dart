@@ -22,6 +22,7 @@ class ConnectedNetworkIpInfoScreen extends StatelessWidget {
       ),
       floatingActionButton: CustomRefreshButton(
         function: () {
+          ipInformation.value = IpInfoModel.fromJson({});
           ApiVpnGate.retrieveIpDetails(ipInformation: ipInformation);
         },
       ),
