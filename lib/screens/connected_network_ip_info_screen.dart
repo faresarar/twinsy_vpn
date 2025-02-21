@@ -22,6 +22,13 @@ class ConnectedNetworkIpInfoScreen extends StatelessWidget {
           ApiVpnGate.retrieveIpDetails(ipInformation: ipInformation);
         },
       ),
+      body: Obx(
+        () => ListView(
+          physics: BouncingScrollPhysics(),
+          padding: EdgeInsets.all(3),
+          children: [],
+        ),
+      ),
     );
   }
 }
