@@ -34,7 +34,7 @@ class CustomButtonWidget extends StatelessWidget {
                   color: color2,
                 ),
                 child: Container(
-                  width: sizeScreen.width * 0.14,
+                  width: sizeScreen.height * 0.14,
                   height: sizeScreen.height * 0.14,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,

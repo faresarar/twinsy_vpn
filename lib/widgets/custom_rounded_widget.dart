@@ -32,8 +32,7 @@ class CustomRoundedWidget extends StatelessWidget {
                     size: 30,
                     color: color,
                   )
-                : image ??
-                    Container(), // Show image if iconData is null, otherwise an empty container
+                : image ?? Container(),
           ),
           Text(
             titleText,

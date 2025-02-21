@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:twinsy_vpn/models/vpn_status_model.dart';
-import 'package:twinsy_vpn/vpn%20engine/vpn_engine.dart';
-import 'package:twinsy_vpn/widgets/custom_rounded_widget.dart';
 import '../App Preferences/app_preferences.dart';
 import '../controllers/home_controller.dart';
+import '../models/vpn_status_model.dart';
+import '../vpn engine/vpn_engine.dart';
 import '../widgets/custom_button_widget.dart';
+import '../widgets/custom_rounded_widget.dart';
 import '../widgets/location_selection.dart';
+import 'available_vpn_servers_location_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -14,6 +15,9 @@ class HomeScreen extends StatelessWidget {
   final vpnInfo = homeController.vpnInfo.value;
   @override
   Widget build(BuildContext context) {
+    VpnEngine.snapshotVpnStage().listen((event){
+      homeController.vpnConnectionState.value = event ;
+    });
     return Scaffold(
       bottomNavigationBar: LocationSelection(),
       appBar: AppBar(
@@ -53,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                   image: vpnInfo.countryLongName.isEmpty
                       ? null // Provide the image if needed when icon is null
                       : Image.asset(
-                          'assets/images/${vpnInfo.countryShortName}.png'), // Replace with your image path
+                          'assets/images/${vpnInfo.countryShortName.toLowerCase()}.png'), // Replace with your image path
                 ),
                 CustomRoundedWidget(
                   titleText: vpnInfo.countryLongName.isEmpty

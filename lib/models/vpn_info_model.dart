@@ -1,7 +1,7 @@
 class VpnInfoModel {
   late final String hostName;
-  late final int ipAddress;
-  late final int ping;
+  late final String ipAddress;
+  late final String ping;
   late final int speed;
   late final String countryLongName;
   late final String countryShortName;
@@ -21,8 +21,8 @@ class VpnInfoModel {
 
   VpnInfoModel.fromJson(Map<String, dynamic> jsonData) {
     hostName = jsonData['HostName'] ?? "";
-    ipAddress = jsonData['IP'] ?? 0;
-    ping = jsonData['Ping'] ?? 0;
+    ipAddress = jsonData['IP'] ?? "";
+    ping = jsonData['Ping'].toString() ?? "";
     speed = jsonData['Speed'] ?? 0;
     countryLongName = jsonData['CountryLong'] ?? "";
     countryShortName = jsonData['CountryShort'] ?? "";

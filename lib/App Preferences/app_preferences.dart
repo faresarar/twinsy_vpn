@@ -18,15 +18,15 @@ class AppPreferences {
   /// for saving single selected vpn details
 
   static VpnInfoModel get vpnInfoModelObject => VpnInfoModel.fromJson(
-        boxOfData.get("vpn" ?? "{}"),
+        jsonDecode(boxOfData.get("vpn") ?? "{}"),
       );
   static set vpnInfoModelObject(VpnInfoModel value) =>
       boxOfData.put("vpn", jsonEncode(value));
   static List<VpnInfoModel> get vpnList {
     List<VpnInfoModel> tempVpnList = [];
-    final dataVpn = jsonDecode(boxOfData.get("vpnList" ?? "[]"));
+    final dataVpn = jsonDecode(boxOfData.get("vpnList") ?? "[]");
     for (var data in dataVpn) {
-      tempVpnList.add(VpnInfoModel.fromJson(dataVpn));
+      tempVpnList.add(VpnInfoModel.fromJson(data));
     }
     return tempVpnList;
   }

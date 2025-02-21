@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../screens/available_vpn_servers_location_screen.dart';
 
 class LocationSelection extends StatelessWidget {
   const LocationSelection({super.key});
@@ -10,7 +13,9 @@ class LocationSelection extends StatelessWidget {
       child: Semantics(
         button: true,
         child: InkWell(
-          onTap:(){},
+          onTap:(){
+            Get.to(AvailableVpnServersLocationScreen());
+          },
           child: Container(
             color: Colors.redAccent,
             padding: EdgeInsets.symmetric(horizontal: sizeScreen.width * 0.041),
