@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class NetworkIpInfoModel {
   final String titleText;
   final String subTitleText;
-  final IconData iconData;
+  final Icon iconData;
 
   NetworkIpInfoModel({
     required this.titleText,
