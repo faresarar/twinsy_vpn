@@ -2,7 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:twinsy_vpn/App%20Preferences/app_preferences.dart';
 import 'package:twinsy_vpn/main.dart';
+import 'package:twinsy_vpn/vpn%20engine/vpn_engine.dart';
 
 import '../controllers/home_controller.dart';
 import '../models/vpn_info_model.dart';
@@ -34,7 +36,22 @@ class VpnLocationCardWidget extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
-        onTap: () {},
+        onTap: () {
+          homeController.vpnInfo.value = vpnInfoModel;
+          AppPreferences.vpnInfoModelObject = vpnInfoModel;
+          Get.back();
+          if (homeController.vpnConnectionState.value ==
+              VpnEngine.vpnConnectedNow) {
+            VpnEngine.stopVpnNow();
+            Future.delayed(
+              Duration(seconds: 3),
+              () => homeController.connectionToVpn(),
+            );
+          }
+          else{
+            homeController.connectionToVpn();
+          }
+        },
         child: ListTile(
           leading: Container(
             padding: EdgeInsets.all(0.5),

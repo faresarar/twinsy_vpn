@@ -36,7 +36,7 @@ class VpnEngine {
   }
 
   /// Stop Vpn Now
-  static Future<void> stopVpnNow(VpnConfigurationModel vpnConfiguration) async {
+  static Future<void> stopVpnNow() async {
     return MethodChannel(eventChannelVpnController).invokeMethod("stop");
   }
 
