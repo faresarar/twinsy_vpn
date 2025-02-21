@@ -7,18 +7,21 @@ class CustomButtonWidget extends StatelessWidget {
     required this.color2,
     required this.color3,
     required this.statusText,
+    required this.function,
   });
   final Color color;
   final Color color2;
   final Color color3;
   final String statusText;
+  final void Function()? function;
   @override
   Widget build(BuildContext context) {
     Size sizeScreen = MediaQuery.sizeOf(context);
     return Semantics(
       button: true,
       child: InkWell(
-        onTap: () {},
+        onTap: function,
+        borderRadius: BorderRadius.circular(100),
         child: Column(
           children: [
             Container(

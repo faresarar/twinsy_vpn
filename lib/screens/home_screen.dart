@@ -7,16 +7,14 @@ import '../vpn engine/vpn_engine.dart';
 import '../widgets/custom_button_widget.dart';
 import '../widgets/custom_rounded_widget.dart';
 import '../widgets/location_selection.dart';
-import 'available_vpn_servers_location_screen.dart';
-
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
   static final homeController = Get.put(HomeController());
   final vpnInfo = homeController.vpnInfo.value;
   @override
   Widget build(BuildContext context) {
-    VpnEngine.snapshotVpnStage().listen((event){
-      homeController.vpnConnectionState.value = event ;
+    VpnEngine.snapshotVpnStage().listen((event) {
+      homeController.vpnConnectionState.value = event;
     });
     return Scaffold(
       bottomNavigationBar: LocationSelection(),
@@ -41,34 +39,31 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Obx(
-            () => Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomRoundedWidget(
-                  titleText: vpnInfo.countryLongName.isEmpty
-                      ? "Location"
-                      : vpnInfo.countryLongName,
-                  subTitleText: "free",
-                  color: Colors.red,
-                  iconData: vpnInfo.countryLongName.isEmpty
-                      ? Icons.flag_circle
-                      : null,
-                  image: vpnInfo.countryLongName.isEmpty
-                      ? null // Provide the image if needed when icon is null
-                      : Image.asset(
-                          'assets/images/${vpnInfo.countryShortName.toLowerCase()}.png'), // Replace with your image path
-                ),
-                CustomRoundedWidget(
-                  titleText: vpnInfo.countryLongName.isEmpty
-                      ? "60 ms"
-                      : "${vpnInfo.ping} ms ",
-                  subTitleText: "ping",
-                  color: Colors.grey,
-                  iconData: Icons.graphic_eq,
-                ),
-              ],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CustomRoundedWidget(
+                titleText: vpnInfo.countryLongName.isEmpty
+                    ? "Location"
+                    : vpnInfo.countryLongName,
+                subTitleText: "free",
+                color: Colors.red,
+                iconData:
+                    vpnInfo.countryLongName.isEmpty ? Icons.flag_circle : null,
+                image: vpnInfo.countryLongName.isEmpty
+                    ? null
+                    : Image.asset(
+                        'assets/images/${vpnInfo.countryShortName.toLowerCase()}.png'), // Replace with your image path
+              ),
+              CustomRoundedWidget(
+                titleText: vpnInfo.countryLongName.isEmpty
+                    ? "60 ms"
+                    : "${vpnInfo.ping} ms ",
+                subTitleText: "ping",
+                color: Colors.grey,
+                iconData: Icons.graphic_eq,
+              ),
+            ],
           ),
           Obx(
             () => CustomButtonWidget(
@@ -76,6 +71,7 @@ class HomeScreen extends StatelessWidget {
               color2: homeController.getRoundVpnButtonColor.withOpacity(0.3),
               color3: homeController.getRoundVpnButtonColor,
               statusText: homeController.getRoundVpnButtonText,
+              function: homeController.connectionToVpn,
             ),
           ),
           StreamBuilder<VpnStatusModel?>(

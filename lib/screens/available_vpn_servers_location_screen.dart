@@ -23,7 +23,7 @@ class AvailableVpnServersLocationScreen extends StatelessWidget {
           ),
         ),
         floatingActionButton: Padding(
-          padding: const EdgeInsets.only(bottom: 10 , right: 10),
+          padding: const EdgeInsets.only(bottom: 10, right: 10),
           child: FloatingActionButton(
             onPressed: () {
               vpnLocationController.retrieveVpnInformation();

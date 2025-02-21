@@ -30,6 +30,9 @@ class HomeController extends GetxController {
       );
       await VpnEngine.startVpnNow(vpnConfiguration);
     }
+    else {
+      await VpnEngine.stopVpnNow();
+    }
   }
   Color get getRoundVpnButtonColor {
     switch (vpnConnectionState.value){
