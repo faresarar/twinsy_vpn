@@ -19,9 +19,7 @@ class NetworkIpInfoWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
-        leading: Icon(
-          networkIpInfoModel.iconData,
-        ),
+        leading: networkIpInfoModel.iconData,
         title: Text(networkIpInfoModel.titleText),
         subtitle: Text(networkIpInfoModel.subTitleText),
       ),

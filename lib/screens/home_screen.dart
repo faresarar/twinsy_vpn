@@ -8,6 +8,7 @@ import '../widgets/custom_button_widget.dart';
 import '../widgets/custom_rounded_widget.dart';
 import '../widgets/location_selection.dart';
 import 'connected_network_ip_info_screen.dart';
+
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
   static final homeController = Get.put(HomeController());
@@ -23,7 +24,7 @@ class HomeScreen extends StatelessWidget {
         title: Text("Free Vpn"),
         leading: IconButton(
           onPressed: () {
-            Get.to(()=>ConnectedNetworkIpInfoScreen());
+            Get.to(() => ConnectedNetworkIpInfoScreen());
           },
           icon: Icon(Icons.perm_device_info),
         ),
@@ -75,6 +76,11 @@ class HomeScreen extends StatelessWidget {
               color3: homeController.getRoundVpnButtonColor,
               statusText: homeController.getRoundVpnButtonText,
               function: homeController.connectionToVpn,
+              statusConnectionText: homeController.vpnConnectionState.value ==
+                      VpnEngine.vpnDisConnectedNow
+                  ? "Not Connected"
+                  : homeController.vpnConnectionState
+                      .replaceAll("_", "".toUpperCase()),
             ),
           ),
           StreamBuilder<VpnStatusModel?>(
