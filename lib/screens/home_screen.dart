@@ -81,6 +81,8 @@ class HomeScreen extends StatelessWidget {
                   ? "Not Connected"
                   : homeController.vpnConnectionState
                       .replaceAll("_", "".toUpperCase()),
+              initTimerNow: homeController.vpnConnectionState.value ==
+                  VpnEngine.vpnConnectedNow,
             ),
           ),
           StreamBuilder<VpnStatusModel?>(

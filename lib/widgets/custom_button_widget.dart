@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'timer_widget.dart';
 
 class CustomButtonWidget extends StatelessWidget {
   const CustomButtonWidget({
@@ -9,6 +12,7 @@ class CustomButtonWidget extends StatelessWidget {
     required this.statusText,
     required this.function,
     required this.statusConnectionText,
+    required this.initTimerNow,
   });
   final Color color;
   final Color color2;
@@ -16,6 +20,8 @@ class CustomButtonWidget extends StatelessWidget {
   final String statusText;
   final void Function()? function;
   final String statusConnectionText;
+  final bool initTimerNow;
+
   @override
   Widget build(BuildContext context) {
     Size sizeScreen = MediaQuery.sizeOf(context);
@@ -91,7 +97,10 @@ class CustomButtonWidget extends StatelessWidget {
               fontSize: 13,
             ),
           ),
-        )
+        ),
+        TimerWidget(
+          initTimerNow: initTimerNow,
+        ),
       ],
     );
   }
